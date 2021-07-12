@@ -5,7 +5,49 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
 
+
+    # ADICIONANDO NOVOS CONTATOS (quando tiver uma coleção):
+    # render json: @contacts.map { |contact| contact.attributes.merge({ author: "Maiqui" }) }
+
+    # QUANDO TIVER SÓ UM CONTATO:
+    # render json: @contacts.attributes.merge({ author: "Maiqui" })
+
+    # USANDO O METHODS:
+    # render json: @contacts, methods: :author
+
+
+
+    # SEM ROOT:
+
     render json: @contacts
+
+    # [{
+    #   "id": 1,
+    #   "name": "Jarrett Upton",
+    #   "email": "milton@kutch.net",
+    #   "birthdate": "1991-09-07",
+    #   "created_at": "2021-07-11T23:21:13.663Z",
+    #   "updated_at": "2021-07-11T23:21:13.663Z",
+    #   "kind_id": 1
+    # }]
+
+
+
+    # COM ROOT:
+
+    # render json: @contacts, root: true
+
+    # [{
+    #   "contact": {
+    #     "id": 1,
+    #     "name": "Jarrett Upton",
+    #     "email": "milton@kutch.net",
+    #     "birthdate": "1991-09-07",
+    #     "created_at": "2021-07-11T23:21:13.663Z",
+    #     "updated_at": "2021-07-11T23:21:13.663Z",
+    #     "kind_id": 1
+    #   }
+    # }]
   end
 
   # GET /contacts/1
